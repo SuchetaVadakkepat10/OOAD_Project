@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Toxic Prompt Generator</title>
+</head>
+<body>
+
+<h2>LLM Red-Team Prompt Generator</h2>
+
+<button onclick="generatePrompt()">Generate Prompt</button>
+
+<p id="output"></p>
+
+<script>
+async function generatePrompt() {
+    const res = await fetch("http://127.0.0.1:5000/generate");
+    const data = await res.json();
+
+    document.getElementById("output").innerHTML =
+        "<b>Prompt:</b> " + data.prompt +
+        "<br><b>Risk Score:</b> " + data.estimated_risk_score;
+}
+</script>
+
+</body>
+</html>
